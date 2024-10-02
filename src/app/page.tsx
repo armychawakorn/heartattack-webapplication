@@ -59,7 +59,7 @@ export default function Home() {
         }
         Swal.fire({
           title: 'ผลการวิเคราะห์',
-          html: data.prediction == 0 ? '<span class="font-bold text-green-500">ไม่มีโอกาศ</span>เป็นโรคการโจมตีหัวใจ' : '<span class="font-bold text-red-500">มีโอกาศ</span>เป็นโรคการโจมตีหัวใจ',
+          html: data.prediction == 0 ? '<span class="font-bold text-green-500">ไม่มีโอกาศ</span>เป็นโรคหัวใจล้มเหลว' : '<span class="font-bold text-red-500">มีโอกาศ</span>เป็นโรคหัวใจล้มเหลว',
           icon: 'success'
         });
       });

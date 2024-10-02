@@ -15,7 +15,7 @@ def predict_heartattack(data_input):
         "ST_Slope_en": [data_input[7]]
     })
 
-    heartattack_model = pickle.load(open('src/app/api/ai/heart_attack_model_b.pkl', 'rb'))
+    heartattack_model = pickle.load(open(data_input[8], 'rb'))
     predicted_class = heartattack_model.predict(input_data)
 
     return predicted_class[0]

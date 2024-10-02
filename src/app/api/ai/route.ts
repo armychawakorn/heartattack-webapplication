@@ -7,7 +7,6 @@ export async function POST(req: NextRequest) {
         const result = await predict(body);
         return NextResponse.json({ prediction: result });
     } catch (error) {
-        console.error(error);
         return NextResponse.json({ prediction: error });
     }
 }
@@ -16,7 +15,7 @@ async function predict(data: number[]) {
     return new Promise((resolve, reject) => {
         try {
             const pyshell = new PythonShell('src/app/api/ai/predict.py', {
-                pythonPath: 'src/app/api/ai/.venv/Scripts/python.exe'
+                pythonPath: process.env.PYTHON_VIRTUAL_ENVIRONMENT_PATH
             });
 
             pyshell.send(JSON.stringify([
@@ -27,7 +26,8 @@ async function predict(data: number[]) {
                 data[4],
                 data[5],
                 data[6],
-                data[7]
+                data[7],
+                process.env.MODEL_PATH
             ]));
 
             pyshell.on('message', function (message: number) {

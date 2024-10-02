@@ -6,7 +6,7 @@ from sklearn.preprocessing import LabelEncoder
 import pickle
 
 
-data = pd.read_csv("heart.csv")
+data = pd.read_csv("training_data.csv")
 data['Sex_en'] = LabelEncoder().fit_transform(data['Sex'])
 data['ChestPainType_en'] = LabelEncoder().fit_transform(data['ChestPainType'])
 data['ST_Slope_en'] = LabelEncoder().fit_transform(data['ST_Slope'])
