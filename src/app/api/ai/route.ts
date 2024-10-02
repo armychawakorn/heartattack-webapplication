@@ -14,8 +14,8 @@ export async function POST(req: NextRequest) {
 async function predict(data: number[]) {
     return new Promise((resolve, reject) => {
         try {
-            const pyshell = new PythonShell('src/app/api/ai/predict.py', {
-                pythonPath: process.env.PYTHON_VIRTUAL_ENVIRONMENT_PATH
+            const pyshell = new PythonShell(process.env.PYTHON_PREDICTION_PATH || "", {
+                pythonPath: process.env.PYTHON_VIRTUAL_ENVIRONMENT_PATH || ""
             });
 
             pyshell.send(JSON.stringify([
